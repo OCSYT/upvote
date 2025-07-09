@@ -2,7 +2,7 @@
 CREATE TABLE verification_token
 (
   identifier TEXT NOT NULL,
-  expires TIMESTAMPTZ NOT NULL,
+  expires TIMESTAMP NOT NULL,
   token TEXT NOT NULL,
 
   PRIMARY KEY (identifier, token)
@@ -30,7 +30,7 @@ CREATE TABLE sessions
 (
   id SERIAL,
   "userId" INTEGER NOT NULL,
-  expires TIMESTAMPTZ NOT NULL,
+  expires TIMESTAMP NOT NULL,
   "sessionToken" VARCHAR(255) NOT NULL,
 
   PRIMARY KEY (id)
@@ -41,7 +41,7 @@ CREATE TABLE users
   id SERIAL,
   name VARCHAR(255),
   email VARCHAR(255),
-  "emailVerified" TIMESTAMPTZ,
+  "emailVerified" TIMESTAMP,
   image TEXT,
 
   PRIMARY KEY (id)
@@ -76,5 +76,5 @@ CREATE TABLE votes (
     vote SMALLINT CHECK (vote IN (-1, 1)),
     vote_type VARCHAR(255) CHECK (vote_type IN ('post', 'comment')),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    -- UNIQUE(user_id, post_id, vote_type)
+    UNIQUE(user_id, post_id, vote_type)
 );
