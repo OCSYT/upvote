@@ -2,21 +2,6 @@
 
 Upvote is a Reddit-esque web application that allows users to create posts, upvote and downvote posts, and comment on posts in a multi-threaded, nested list.
 
-The project is built using Next.js with the /app router and [Tailwind CSS](https://tailwindcss.com/), and uses [Auth.js (formerly Next Auth)](https://authjs.dev/) for user authentication. The data is stored in a Postgres database, which is created and accessed with raw SQL queries using the `pg` package.
-
-The project is a work in progress and is not yet complete.
-
-## Features
-
-- [x] View a list of posts
-- [x] View a single post
-- [x] Create a post
-- [x] Upvote and downvote posts
-- [x] Pagination of posts
-- [x] Comment on posts
-- [x] Nested comments (recursive lists)
-- [x] User authentication
-
 ## Setup instructions
 
 1. Fork the repository (check "copy the main branch only") and clone your fork to your local machine
@@ -30,19 +15,22 @@ The project is a work in progress and is not yet complete.
 5. Run `npm run dev` to start the development server
 6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the site
 
-## Potential future features
+# Reflection
 
-- [ ] User profiles
-- [ ] Sorting posts by recent (date posted), top (most upvotes), and most controversial (most upvotes _and_ downvotes)
-- [ ] User karma scores
-- [ ] User badges / trophies (awards for achievements like number of posts, years on the site, etc.)
-- [ ] User settings (eg. number of posts per page, theme, etc.)
-- [ ] Moderation tools / reporting or flagging objectionable comments for removable by admins
-- [ ] Searching posts (possibly using simple SQL LIKE '%some search%', or [Postgres text search](https://www.crunchydata.com/blog/postgres-full-text-search-a-search-engine-in-a-database))
-- [ ] Subreddits (separate communities, that isn't just one big list of posts, that can be created by users)
-- [ ] User notifications
-- [ ] User private messaging
-- [ ] User blocking
-- [ ] User following
-- [ ] User feed (posts from users you follow)
-- [ ] User flair
+🎯 Please mention the requirements you met and which goals you achieved for this assignment.
+-I met the requirement of deploying the project with a few fixes in the project:
+- Fixes added:
+   - Page titles match post
+   - Error message when trying to vote when not logged in
+   - Fixed being able to vote more than once & voting infinite times
+   - Fixed comments showing reply when not logged in
+   - Added deleting posts/comments
+   - Added profile pictures to posts
+   - Probably more i forgot to mention here
+
+
+🎯 Were there any requirements or goals that you were not quite able to achieve?
+- No
+
+🎯 If so, could you please tell us what was it that you found difficult about these tasks?
+- I didnt struggle
