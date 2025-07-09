@@ -9,13 +9,24 @@ import {
   TbArrowBigUpFilled,
 } from "react-icons/tb";
 import { FaSpinner } from "react-icons/fa";
+import { useSession } from "next-auth/react";
 
 export function VoteButtons({ upvote, downvote, votes, existingVote }) {
-  const { pending, data, method, action } = useFormStatus();
+  const { pending } = useFormStatus();
+  const { data: session } = useSession();
+
+  function handleNotLoggedIn(e) {
+    e.preventDefault();
+    alert("You must be logged in to vote.");
+  }
 
   return (
     <>
-      <button formAction={upvote}>
+      <button
+        formAction={session ? upvote : undefined}
+        onClick={!session ? handleNotLoggedIn : undefined}
+        disabled={pending}
+      >
         {existingVote?.vote === 1 ? (
           <TbArrowBigUpFilled
             size={24}
@@ -41,7 +52,11 @@ export function VoteButtons({ upvote, downvote, votes, existingVote }) {
           votes
         )}
       </span>
-      <button formAction={downvote}>
+      <button
+        formAction={session ? downvote : undefined}
+        onClick={!session ? handleNotLoggedIn : undefined}
+        disabled={pending}
+      >
         {existingVote?.vote === -1 ? (
           <TbArrowBigDownFilled
             size={24}
