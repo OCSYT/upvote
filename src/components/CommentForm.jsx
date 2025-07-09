@@ -13,6 +13,7 @@ export function CommentForm({ postId, parentCommentId }) {
   });
   const boundDispatch = dispatch.bind({ postId, parentCommentId });
   const [isOpen, setOpen] = useState(false);
+  const { data: session } = useSession();
 
   useEffect(() => {
     if (state.success) {
@@ -22,9 +23,11 @@ export function CommentForm({ postId, parentCommentId }) {
 
   return (
     <div className="ml-4">
-      <button onClick={() => setOpen(!isOpen)} className="text-zinc-400">
-        {isOpen ? "Close" : "Reply"}
-      </button>
+      {session && (
+        <button onClick={() => setOpen(!isOpen)} className="text-zinc-400">
+          {isOpen ? "Close" : "Reply"}
+        </button>
+      )}
       {isOpen ? (
         <>
           <form action={boundDispatch} className="flex flex-col space-y-3">
