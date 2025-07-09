@@ -8,7 +8,7 @@ import { Providers } from "@/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Didit",
+  title: "Upvote",
   description: "A social app like Reddit or Hacker News",
 };
 
@@ -19,7 +19,7 @@ export default async function RootLayout({ children }) {
         <Providers>
           <header className="border-b border-zinc-200 p-4 flex items-center shadow-lg sticky top-0 bg-white bg-opacity-65 backdrop-blur-sm">
             <Link href="/" className="text-xl">
-              Didit
+              Upvote
             </Link>
             <Link
               href="/add-post"

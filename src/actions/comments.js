@@ -15,3 +15,9 @@ export async function saveComment({ postId, parentCommentId }, formData) {
   revalidatePath(`/post/${postId}`);
   return { success: true };
 }
+
+export async function deleteCommentAction(commentId, postId) {
+  "use server";
+  await db.query("DELETE FROM comments WHERE id = $1", [commentId]);
+  revalidatePath(`/post/${postId}`);
+}
